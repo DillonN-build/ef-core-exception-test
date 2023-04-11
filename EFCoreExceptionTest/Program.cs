@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using EFCoreExceptionTest;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -26,4 +27,8 @@ var results = await dbContext.Parents
     .Include(p => p.Children).ThenInclude(c => c.Parent)
     .ToListAsync();
 
-Console.WriteLine(JsonSerializer.Serialize(results));
+var jsonOpts = new JsonSerializerOptions
+{
+    ReferenceHandler = ReferenceHandler.IgnoreCycles
+};
+Console.WriteLine(JsonSerializer.Serialize(results, options: jsonOpts));
