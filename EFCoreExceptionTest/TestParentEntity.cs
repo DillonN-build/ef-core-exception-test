@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCoreExceptionTest;
 
+[Table("Parent")]
 internal class TestParentEntity
 {
     [Key]

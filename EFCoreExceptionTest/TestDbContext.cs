@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreExceptionTest;
 
@@ -10,6 +11,7 @@ internal class TestDbContext : DbContext
     }
 
     public DbSet<TestParentEntity> Parents { get; set; }
+
 
     public DbSet<TestChildEntity> Children { get; set; }
 }
