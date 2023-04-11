@@ -28,8 +28,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore -p EFCoreVersion=${{ matrix.ef-core-version }}
     - name: Build
       run: dotnet build --no-restore -p EFCoreVersion=${{ matrix.ef-core-version }}
     - name: Run
-      run: dotnet run --project ./EFCoreExceptionTest/EFCoreExceptionTest.csproj
+      run: dotnet run --project ./EFCoreExceptionTest/EFCoreExceptionTest.csproj -p EFCoreVersion=${{ matrix.ef-core-version }}
